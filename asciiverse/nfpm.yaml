@@ -1,0 +1,38 @@
+# System packages (.deb, .rpm, .apk, Arch) for asciiquarium, built by nfpm
+# from the same static Linux build as the av archive. The release workflow
+# sets VERSION, RELEASE (our packaging release) and ARCH (amd64 or arm64).
+# No .desktop file on purpose: av is the one place titles are started from.
+name: asciiquarium
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: games
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/asciiquarium
+license: GPL-2.0-or-later
+# distributions also ship the original Perl asciiquarium under this name
+conflicts:
+  - asciiquarium
+description: |
+  An aquarium animation in ASCII art: fish, sharks, whales and more.
+  A C port of Kirk Baucom's asciiquarium 1.1 with the same art and
+  behaviour and no Perl, packaged by Asciiverse.
+contents:
+  - src: asciiquarium-bin
+    dst: /usr/bin/asciiquarium
+    file_info: { mode: 0755 }
+  - src: gpl.txt
+    dst: /usr/share/doc/asciiquarium/copyright
+    file_info: { mode: 0644 }
+  - src: README
+    dst: /usr/share/doc/asciiquarium/README
+    file_info: { mode: 0644 }
+  - src: CHANGES
+    dst: /usr/share/doc/asciiquarium/CHANGES
+    file_info: { mode: 0644 }
+  - src: PATCHES.md
+    dst: /usr/share/doc/asciiquarium/PATCHES.md
+    file_info: { mode: 0644 }
